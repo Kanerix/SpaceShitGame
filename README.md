@@ -1,3 +1,3 @@
 # SpaceShitGame
 
-A school project
+### A school project

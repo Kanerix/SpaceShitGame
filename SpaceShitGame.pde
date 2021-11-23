@@ -1,3 +1,4 @@
+// Alle variablerne er protected for at ungå at man overskriver dem, da de er essentielle for at spillet virker.
 protected AppState state;
 
 protected Game game;
@@ -5,6 +6,7 @@ protected Diagram diagram;
 protected SettingsMenu settings;
 
 protected GUI menuGUI, diagramGUI, levelsGUI;
+
 // Bruges til at holde styr på hvilket sted i vores app vi er
 enum AppState {
   MENU, RUNNING, DIAGRAM, SETTINGS, LEVELS
@@ -14,14 +16,13 @@ void setup() {
   size(800, 800);
 
   textFont(createFont("./assets/Gameplay.ttf", 32));
-  // Meget vigtige funktioner, for at collision virker!
   textAlign(CENTER, CENTER);
-  rectMode(CENTER);
+  rectMode(CENTER); // Meget vigtige funktioner, for at collision virker!
 
   // Sætter vores app state til vi starter i menuen
   state = AppState.MENU;
 
-  // Brugt til at autogenerer et class diagram
+  // Brugt til at autogenerer et class diagram (reflection)
   diagram = new Diagram(this);
 
   // Game GUI

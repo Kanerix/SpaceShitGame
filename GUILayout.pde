@@ -47,7 +47,7 @@ abstract class ButtonLayout extends GUIButton {
     text(this.text, this.pos.x+4-offset, this.pos.y-3+4-offset);
 
     fill(GUIColors.WHITE);
-    text(this.text, this.pos.x, this.pos.y-3-offset);
+    text(this.text, this.pos.x-offset, this.pos.y-3-offset);
   }
 }
 
