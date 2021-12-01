@@ -28,9 +28,20 @@ class SettingsMenu {
       game.ship.rightKey = jsonObject.getInt("rightKey");
       game.ship.leftKey = jsonObject.getInt("leftKey");
     }
-    catch(Exception error) {
-      println(error);
+    catch(Exception _error) {
+      this.generateBindsFile();
     }
+  }
+
+  void generateBindsFile() {
+    JSONObject jsonObject = new JSONObject();
+
+    jsonObject.setInt("forwardKey", game.ship.forwardKey);
+    jsonObject.setInt("backwardsKey", game.ship.backwardsKey);
+    jsonObject.setInt("rightKey", game.ship.rightKey);
+    jsonObject.setInt("leftKey", game.ship.leftKey);
+
+    saveJSONObject(jsonObject, "data/binds.json");
   }
 
   // Viser settings siden ud fra state.
@@ -112,8 +123,8 @@ class SettingsMenu {
 
     // Her gemmer vi JSON objektet vi har lavet
     saveJSONObject(json, "./data/binds.json");
-    
-    // Sætter state til non som betyder vi ikke 
+
+    // Sætter state til non som betyder vi ikke
     // længere er i gang med at bind en knap
     this.state = SettingsMenuState.NONE;
   }

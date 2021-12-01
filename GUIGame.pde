@@ -24,32 +24,32 @@ class GameBackground implements GUIElement {
       // Tilfældigt sted på skærmen.
       this.pos = new PVector(random(width), random(height));
       // Tilfældig radius på stjernen
-      this.radius = random(3.5, 5);
-      // Tilfældig opacity, dog altid hvid
+      this.radius = random(1.5, 2.25);
+      // Tilfældig hvid/grå farve, kan være mellem helt hvid eller lidt mere grålig
       this.col = round(random(200, 255));
       // Tilfældig speed, enten 2 eller 3. Skaber en effekt af nogen stjerner af hurtigere end andre.
       this.speed = round(random(2, 3));
     }
 
     void update() {
-      // Hvis spillet ikke kører skal du ikke bevæge sig
-      if (game.state == GameState.RUNNING) {
-        this.pos.sub(this.speed, 0);
+      this.pos.sub(this.speed, 0);
 
-        // Respawner stjernen hvis den er ude af skærmen
-        if (this.pos.x < -5) {
-          this.pos.x = width+5;
-          this.pos.y = round(random(height));
-        }
+      // Respawner stjernen hvis den er ude af skærmen
+      if (this.pos.x < -5) {
+        this.pos.x = width+5;
+        this.pos.y = round(random(height));
       }
     }
-    
+
     // Viser stjernen
     void display() {
-      this.update();
+      // Hvis spillet ikke kører skal du ikke bevæge sig
+      if (game.state == GameState.RUNNING) {
+        this.update();
+      }
 
       fill(this.col);
-      circle(this.pos.x, this.pos.y, radius);
+      circle(this.pos.x, this.pos.y, this.radius*2);
     }
   }
 

@@ -17,7 +17,7 @@ void setup() {
 
   textFont(createFont("./assets/Gameplay.ttf", 32));
   textAlign(CENTER, CENTER);
-  rectMode(CENTER); // Meget vigtige funktioner, for at collision virker!
+  rectMode(CENTER); // Meget vigtige funktion, for at collision virker!
 
   // Sætter vores app state til vi starter i menuen
   state = AppState.MENU;
@@ -25,14 +25,14 @@ void setup() {
   // Brugt til at autogenerer et class diagram (reflection)
   diagram = new Diagram(this);
 
-  // Game GUI
+  // Game GUI's
   GUI gameRunningGUI = new GUI(
     new GameBackground(),
     new Speedometer()
     );
 
   GUI gamePausedGUI = new GUI(
-    //new Backdrop(),
+    new Backdrop(),
     new PauseTitle(),
     new StartGameButton(),
     new LeaveGameButton()
@@ -72,7 +72,7 @@ void setup() {
     new DiagramPreviousPageButton()
     );
 
-  // Settings GUI
+  // Settings GUI's
   GUI settingsHomeGUI = new GUI(
     new SettingsTitle(),
     new QuitToMenuButton(),

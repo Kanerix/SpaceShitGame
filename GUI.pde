@@ -4,6 +4,7 @@ class GUI {
   GUIElement[] elements = {};
 
   GUI(GUIElement ...elements) {
+    // Et hack til at ændre et arrays størrelse.
     this.elements = (GUIElement[]) concat(this.elements, elements);
   }
 
@@ -42,8 +43,9 @@ interface GUIColors {
   color BLACK = #030303;
 }
 
-// Et element som automatisk har en funktion der tjekker for click og hover
+// En component som automatisk har en funktion der tjekker for click og hover
 // (hover og clicked kan bruges til styling af knappen)
+
 abstract class GUIButton implements GUIElement {
   // Bruges til at finde ud af om der bliver klikket på knappen
   PVector pos, size;
